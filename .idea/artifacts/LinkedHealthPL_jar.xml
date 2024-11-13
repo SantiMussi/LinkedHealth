@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="LinkedHealthPL:jar">
+    <output-path>$PROJECT_DIR$/../../Servr/plugins</output-path>
+    <root id="archive" name="LinkedHealthPL.jar">
+      <element id="module-output" name="LinkedHealthPL" />
+    </root>
+  </artifact>
+</component>
