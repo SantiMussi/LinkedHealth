@@ -5,6 +5,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.event.entity.EntityRegainHealthEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -56,5 +57,30 @@ public class Main extends JavaPlugin implements Listener {
 
         // Set the new player's health to match the reference health
         newPlayer.setHealth(referenceHealth);
+    }
+
+    @EventHandler
+    public void onPlayerRegainHealth(EntityRegainHealthEvent event) {
+        // Check if the entity is a player
+        if (event.getEntity() instanceof Player) {
+            Player healedPlayer = (Player) event.getEntity();
+
+            // Quantity of health regained
+            double healthRegained = event.getAmount();
+
+            // Calculates the new Health the players will receive
+            double newHealth = Math.min(healedPlayer.getHealth() + healthRegained, healedPlayer.getMaxHealth());
+
+            // Cancel the event so the player doesn't get healed two times
+            event.setCancelled(true);
+            healedPlayer.setHealth(newHealth);
+
+            // Establish the new health for all the players
+            for (Player player : Bukkit.getOnlinePlayers()) {
+                if (!player.equals(healedPlayer)) {
+                    player.setHealth(Math.min(player.getMaxHealth(), newHealth));
+                }
+            }
+        }
     }
 }
