@@ -29,11 +29,10 @@ public class Main extends JavaPlugin implements Listener {
             double damage = event.getFinalDamage();
             double newHealth = Math.max(0, damagedPlayer.getHealth() - damage);
 
-            event.setCancelled(true);
             damagedPlayer.setHealth(newHealth);
 
             for (Player player : Bukkit.getOnlinePlayers()) {
-                if (!player.equals(damagedPlayer)) {
+                if(!player.equals(damagedPlayer)) {
                     double playerHealth = Math.max(0, player.getHealth() - damage);
                     player.setHealth(playerHealth);
                 }
@@ -62,8 +61,7 @@ public class Main extends JavaPlugin implements Listener {
     @EventHandler
     public void onPlayerRegainHealth(EntityRegainHealthEvent event) {
         // Check if the entity is a player
-        if (event.getEntity() instanceof Player) {
-            Player healedPlayer = (Player) event.getEntity();
+        if (event.getEntity() instanceof Player healedPlayer) {
 
             // Quantity of health regained
             double healthRegained = event.getAmount();
