@@ -124,7 +124,7 @@ public class Main extends JavaPlugin implements Listener {
                 return true;
             }
 
-            if(!sender.hasPermission("linkedhealth.commands.sethealth")){
+            if(!sender.hasPermission("linkedhealth.commands.sethealth") || !isPluginEnabled){
                 sender.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix + "&cYou don't have permission to use this command!"));
                 return true;
             }

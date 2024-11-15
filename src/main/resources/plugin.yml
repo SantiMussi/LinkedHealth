@@ -4,9 +4,9 @@ name: LinkedHealth
 author: Sanju
 api-version: 1.13
 commands:
-  linkedHealth:
+  setHealth:
     description: Set health for everyone in the server
-    usage: /sethealth <health>
+    usage: /setHealth <value>
     aliases: [sh, seth, sethealth]
 
   syncHealth:
@@ -18,3 +18,8 @@ commands:
     description: Check if sync health is enabled or not
     usage: /isSyncHealth
     aliases: [isSyncH]
+
+  linkedHealth:
+    description: Shows version and author of the plugin
+    usage: /linkedHealth
+    aliases: [lh, linkedH]
