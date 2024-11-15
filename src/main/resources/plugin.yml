@@ -1,5 +1,20 @@
 main: LH.sanju.Main
-version: 1.0.1
+version: 1.0.2
 name: LinkedHealth
 author: Sanju
 api-version: 1.13
+commands:
+  linkedHealth:
+    description: Set health for everyone in the server
+    usage: /sethealth <health>
+    aliases: [sh, seth, sethealth]
+
+  syncHealth:
+    description: Enable/disable sync health for everyone in the server
+    usage: /syncHealth
+    aliases: [syncHealth]
+
+  isSyncHealth:
+    description: Check if sync health is enabled or not
+    usage: /isSyncHealth
+    aliases: [isSyncH]
