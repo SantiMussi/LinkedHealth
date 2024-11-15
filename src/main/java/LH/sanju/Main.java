@@ -1,5 +1,6 @@
 package LH.sanju;
 
+import org.bukkit.ChatColor;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -11,21 +12,22 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class Main extends JavaPlugin implements Listener {
 
+    public static String prefix = ChatColor.GRAY + "[" + ChatColor.RED + "LinkedHealth" + ChatColor.GRAY + "] ";
+    private String version = getDescription().getVersion();
     @Override
     public void onEnable() {
         Bukkit.getServer().getPluginManager().registerEvents(this, this);
-        getLogger().info("LinkedHealthPlugin Enabled!");
+        getLogger().info(ChatColor.translateAlternateColorCodes('&', prefix + "&aPlugin enabled! Version: " + version));
     }
 
     @Override
     public void onDisable() {
-        getLogger().info("LinkedHealthPlugin Disabled!");
+        getLogger().info(ChatColor.translateAlternateColorCodes('&', prefix+ "Plugin disabled!"));
     }
 
     @EventHandler
     public void onPlayerDamage(EntityDamageEvent event) {
-        if (event.getEntity() instanceof Player) {
-            Player damagedPlayer = (Player) event.getEntity();
+        if (event.getEntity() instanceof Player damagedPlayer) {
             double damage = event.getFinalDamage();
             double newHealth = Math.max(0, damagedPlayer.getHealth() - damage);
 
