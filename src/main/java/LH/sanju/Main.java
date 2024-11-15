@@ -136,6 +136,10 @@ public class Main extends JavaPlugin implements Listener {
 
             try {
                 double health = Double.parseDouble(args[0]);
+                if(health < 0 || health > 20){
+                    sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "§cInvalid number. Please provide a valid health value."));
+                    return true;
+                }
                 for (Player player : Bukkit.getOnlinePlayers()) {
                     player.setHealth(Math.min(player.getMaxHealth(), health));
                 }
